@@ -46,12 +46,16 @@ export default function Home() {
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+
               <Link href="/contact">
                 <Button variant="primary">Get Started</Button>
               </Link>
               <Link href="/portfolio">
                 <Button variant="outline">View Our Work</Button>
               </Link>
+              <Button variant="primary">Get Started</Button>
+              <Button variant="outline">View Our Work</Button>
+
             </div>
           </AnimatedSection>
         </Container>
@@ -82,6 +86,11 @@ export default function Home() {
                     <p className="text-sm text-gray-600 dark:text-gray-300">{service.description}</p>
                   </Card>
                 </Link>
+
+                <Card title={service.title}>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{service.description}</p>
+                </Card>
+
               </AnimatedSection>
             ))}
           </div>
