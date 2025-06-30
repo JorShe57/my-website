@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import AnimatedSection from "@/components/ui/AnimatedSection";
 
 export interface Stat {
   label: string;
@@ -54,19 +55,21 @@ export default function Stats({ stats, className }: StatsProps) {
   }, [inView]);
 
   return (
-    <div ref={ref} className={className}>
-      <dl className="grid grid-cols-2 gap-8 md:grid-cols-4">
-        {stats.map((stat, i) => (
-          <div key={stat.label} className="text-center">
-            <dt className="text-3xl font-bold text-blue-600 dark:text-blue-400">
-              {counts[i]}
-            </dt>
-            <dd className="mt-1 text-sm font-medium text-gray-600 dark:text-gray-300">
-              {stat.label}
-            </dd>
-          </div>
-        ))}
-      </dl>
-    </div>
+    <AnimatedSection className={className}>
+      <div ref={ref}>
+        <dl className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          {stats.map((stat, i) => (
+            <div key={stat.label} className="text-center">
+              <dt className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                {counts[i]}
+              </dt>
+              <dd className="mt-1 text-sm font-medium text-gray-600 dark:text-gray-300">
+                {stat.label}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </AnimatedSection>
   );
 }

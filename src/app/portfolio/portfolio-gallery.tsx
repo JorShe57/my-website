@@ -5,6 +5,7 @@ import ProjectCard from "@/components/portfolio/ProjectCard";
 import ProjectFilter from "@/components/portfolio/ProjectFilter";
 import CaseStudyPreview from "@/components/portfolio/CaseStudyPreview";
 import Button from "@/components/ui/Button";
+import AnimatedSection from "@/components/ui/AnimatedSection";
 
 const projects = [
   {
@@ -59,8 +60,10 @@ export default function PortfolioGallery() {
         <Container>
           <ProjectFilter categories={categories} active={filter} onChange={setFilter} />
           <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {filtered.map((p) => (
-              <ProjectCard key={p.title} {...p} />
+            {filtered.map((p, i) => (
+              <AnimatedSection key={p.title} delay={i * 0.1}>
+                <ProjectCard {...p} />
+              </AnimatedSection>
             ))}
           </div>
         </Container>
@@ -69,8 +72,10 @@ export default function PortfolioGallery() {
         <Container>
           <h2 className="text-center text-3xl font-bold">Case Studies</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {caseStudies.map((cs) => (
-              <CaseStudyPreview key={cs.title} {...cs} />
+            {caseStudies.map((cs, i) => (
+              <AnimatedSection key={cs.title} delay={i * 0.1}>
+                <CaseStudyPreview {...cs} />
+              </AnimatedSection>
             ))}
           </div>
           <div className="mt-12 text-center">
