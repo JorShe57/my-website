@@ -3,6 +3,7 @@ import { FormEvent, useState, useTransition } from 'react';
 import { sendContact } from '@/actions/contact';
 import Button from '@/components/ui/Button';
 import Toast from '@/components/ui/Toast';
+import Spinner from '@/components/ui/Spinner';
 
 export default function ContactForm() {
   const [pending, startTransition] = useTransition();
@@ -88,7 +89,8 @@ export default function ContactForm() {
           rows={4}
         />
       </div>
-      <Button type="submit" disabled={pending} className="w-full">
+      <Button type="submit" disabled={pending} className="w-full gap-2">
+        {pending && <Spinner />}
         {pending ? 'Sending...' : 'Send Message'}
       </Button>
       {toast && <Toast {...toast} onClose={() => setToast(null)} />}

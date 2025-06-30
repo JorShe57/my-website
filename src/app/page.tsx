@@ -1,6 +1,7 @@
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Container from "@/components/ui/Container";
+import AnimatedSection from "@/components/ui/AnimatedSection";
 
 export default function Home() {
   const services = [
@@ -15,15 +16,23 @@ export default function Home() {
       <section id="home" className="relative flex min-h-screen items-center justify-center text-center text-white">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 animate-gradient" />
         <Container className="relative z-10 py-32">
-          <h1 className="text-4xl font-bold sm:text-6xl">Elevate Digital</h1>
-          <p className="mt-4 text-xl sm:text-2xl">Transforming Ideas Into Digital Excellence</p>
-          <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg">
-            We craft cutting-edge digital solutions that help your business thrive in a connected world.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button variant="primary">Get Started</Button>
-            <Button variant="outline">View Our Work</Button>
-          </div>
+          <AnimatedSection>
+            <h1 className="text-4xl font-bold sm:text-6xl">Elevate Digital</h1>
+          </AnimatedSection>
+          <AnimatedSection delay={0.1}>
+            <p className="mt-4 text-xl sm:text-2xl">Transforming Ideas Into Digital Excellence</p>
+          </AnimatedSection>
+          <AnimatedSection delay={0.2}>
+            <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg">
+              We craft cutting-edge digital solutions that help your business thrive in a connected world.
+            </p>
+          </AnimatedSection>
+          <AnimatedSection delay={0.3}>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button variant="primary">Get Started</Button>
+              <Button variant="outline">View Our Work</Button>
+            </div>
+          </AnimatedSection>
         </Container>
       </section>
 
@@ -40,10 +49,12 @@ export default function Home() {
         <Container>
           <h2 className="text-center text-3xl font-bold">Our Services</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
-            {services.map((service) => (
-              <Card key={service.title} title={service.title}>
-                <p className="text-sm text-gray-600 dark:text-gray-300">{service.description}</p>
-              </Card>
+            {services.map((service, i) => (
+              <AnimatedSection key={service.title} delay={i * 0.1}>
+                <Card title={service.title}>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{service.description}</p>
+                </Card>
+              </AnimatedSection>
             ))}
           </div>
         </Container>

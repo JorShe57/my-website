@@ -31,12 +31,14 @@ export default function CaseStudyPreview({
           alt={`${title} before`}
           fill
           className={`object-cover transition-opacity ${hover ? "opacity-0" : "opacity-100"}`}
+          loading="lazy"
         />
         <Image
           src={imageAfter}
           alt={`${title} after`}
           fill
           className={`object-cover transition-opacity ${hover ? "opacity-100" : "opacity-0"}`}
+          loading="lazy"
         />
       </div>
       <div className="p-4">

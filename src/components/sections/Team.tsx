@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import AnimatedSection from "@/components/ui/AnimatedSection";
 
 export interface SocialLinks {
   twitter?: string;
@@ -39,36 +40,29 @@ function useInView<T extends HTMLElement>(options?: IntersectionObserverInit) {
 }
 
 export default function Team({ members, className }: TeamProps) {
-  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.2 });
+  const { ref } = useInView<HTMLDivElement>({ threshold: 0.2 });
 
   return (
     <div
       ref={ref}
-      className={
-        "grid gap-8 sm:grid-cols-2 md:grid-cols-3 " + (className ?? "")
-      }
+      className={"grid gap-8 sm:grid-cols-2 md:grid-cols-3 " + (className ?? "")}
     >
       {members.map((member, idx) => (
-        <div
-          key={member.name}
-          className={`rounded-lg border border-gray-200 bg-white p-6 text-center shadow-sm transition duration-700 dark:border-gray-800 dark:bg-gray-900 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-          style={{ transitionDelay: `${idx * 100}ms` }}
-        >
-          <div className="mx-auto h-24 w-24 overflow-hidden rounded-full">
-            <Image
-              src={member.image}
-              alt={member.name}
-              width={96}
-              height={96}
-            />
-          </div>
-          <h3 className="mt-4 text-lg font-semibold">{member.name}</h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400">{member.title}</p>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">{member.bio}</p>
-          {member.social && (
-            <div className="mt-3 flex justify-center space-x-4" aria-label="Social links">
+        <AnimatedSection key={member.name} delay={idx * 0.1}>
+          <div className="rounded-lg border border-gray-200 bg-white p-6 text-center shadow-sm dark:border-gray-800 dark:bg-gray-900">
+            <div className="mx-auto h-24 w-24 overflow-hidden rounded-full">
+              <Image
+                src={member.image}
+                alt={member.name}
+                width={96}
+                height={96}
+              />
+            </div>
+            <h3 className="mt-4 text-lg font-semibold">{member.name}</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{member.title}</p>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">{member.bio}</p>
+            {member.social && (
+              <div className="mt-3 flex justify-center space-x-4" aria-label="Social links">
               {member.social.twitter && (
                 <a href={member.social.twitter} className="hover:text-blue-600" aria-label="Twitter">
                   <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -92,7 +86,8 @@ export default function Team({ members, className }: TeamProps) {
               )}
             </div>
           )}
-        </div>
+          </div>
+        </AnimatedSection>
       ))}
     </div>
   );
