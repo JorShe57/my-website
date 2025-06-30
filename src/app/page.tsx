@@ -53,8 +53,6 @@ export default function Home() {
               <Link href="/portfolio">
                 <Button variant="outline">View Our Work</Button>
               </Link>
-              <Button variant="primary">Get Started</Button>
-              <Button variant="outline">View Our Work</Button>
 
             </div>
           </AnimatedSection>
@@ -86,10 +84,6 @@ export default function Home() {
                     <p className="text-sm text-gray-600 dark:text-gray-300">{service.description}</p>
                   </Card>
                 </Link>
-
-                <Card title={service.title}>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{service.description}</p>
-                </Card>
 
               </AnimatedSection>
             ))}
