@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Navigation, { NavItem } from "./Navigation";
-import Button from "@/components/ui/Button";
+import NewsletterForm from "@/components/forms/NewsletterForm";
 
 export interface FooterProps {
   className?: string;
@@ -44,21 +44,9 @@ export default function Footer({ className }: FooterProps) {
         <div>
           <h4 className="text-sm font-semibold">Contact Us</h4>
           <p className="mt-2 text-sm">info@elevatedigital.com</p>
-          <form className="mt-4 flex max-w-xs">
-            <label htmlFor="newsletter" className="sr-only">
-              Email
-            </label>
-            <input
-              id="newsletter"
-              type="email"
-              required
-              className="w-full rounded-l-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
-              placeholder="Email address"
-            />
-            <Button type="submit" className="rounded-l-none" variant="primary">
-              Subscribe
-            </Button>
-          </form>
+          <div className="mt-4">
+            <NewsletterForm />
+          </div>
         </div>
       </div>
       <div className="mt-12 border-t border-gray-200 pt-4 text-center text-xs dark:border-gray-700">
