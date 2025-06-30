@@ -1,10 +1,17 @@
 'use client';
 import { cn } from "@/lib/utils";
+import type { SVGProps } from "react";
 
-// Geometric pattern background
+// Enhanced geometric pattern background with both patterns and gradients
 export function GeometricBackground({ className }: { className?: string }) {
   return (
     <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
+      {/* Gradient orbs from branch version */}
+      <div className="absolute -top-16 -left-16 h-72 w-72 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 opacity-30 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-80 w-80 translate-x-1/3 translate-y-1/3 rounded-full bg-gradient-to-br from-pink-500 to-yellow-500 opacity-20 blur-2xl" />
+      <div className="absolute top-1/2 left-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 opacity-10 blur-2xl" />
+      
+      {/* SVG patterns from main version */}
       <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none">
         <defs>
           <pattern
@@ -26,22 +33,29 @@ export function GeometricBackground({ className }: { className?: string }) {
   );
 }
 
-// Floating orbs background
+// Enhanced floating orbs background combining both versions
 export function FloatingOrbs({ className }: { className?: string }) {
   return (
     <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
-      <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full animate-float blur-xl" />
-      <div 
-        className="absolute top-3/4 right-1/4 w-24 h-24 bg-purple-500/10 rounded-full animate-float blur-xl" 
+      {/* Larger, more vibrant orbs from branch version */}
+      <div className="absolute top-1/4 left-1/4 h-36 w-36 rounded-full bg-purple-400/30 blur-2xl animate-float" />
+      <div
+        className="absolute top-1/2 right-1/3 h-24 w-24 rounded-full bg-pink-400/30 blur-xl animate-float"
+        style={{ animationDelay: "1s" }}
+      />
+      <div
+        className="absolute bottom-1/4 left-1/3 h-32 w-32 rounded-full bg-blue-400/30 blur-2xl animate-float"
         style={{ animationDelay: "2s" }}
       />
+      
+      {/* Additional subtle orbs from main version */}
       <div 
-        className="absolute top-1/2 left-3/4 w-40 h-40 bg-pink-500/10 rounded-full animate-float blur-xl" 
-        style={{ animationDelay: "4s" }}
+        className="absolute top-3/4 right-1/4 w-24 h-24 bg-indigo-500/20 rounded-full animate-float blur-xl" 
+        style={{ animationDelay: "3s" }}
       />
       <div 
-        className="absolute bottom-1/4 left-1/2 w-28 h-28 bg-indigo-500/10 rounded-full animate-float blur-xl" 
-        style={{ animationDelay: "1s" }}
+        className="absolute bottom-1/4 left-1/2 w-28 h-28 bg-cyan-500/20 rounded-full animate-float blur-xl" 
+        style={{ animationDelay: "4s" }}
       />
     </div>
   );
@@ -76,11 +90,12 @@ export function GridBackground({ className }: { className?: string }) {
   );
 }
 
-// Gradient mesh background
+// Enhanced gradient mesh background
 export function GradientMesh({ className }: { className?: string }) {
   return (
     <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 animate-gradient-shift" />
+      {/* Enhanced version combining both approaches */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/30 via-pink-500/20 to-blue-500/30 blur-2xl animate-gradient-shift" />
       <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-blue-400/30 to-transparent animate-pulse" />
       <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-purple-400/30 to-transparent animate-pulse" style={{ animationDelay: "2s" }} />
     </div>
@@ -161,17 +176,20 @@ export function ParticleField({ className }: { className?: string }) {
   );
 }
 
-// Section divider with decorative elements
-export function SectionDivider({ 
-  variant = "wave",
-  className 
-}: { 
+// Enhanced section divider combining both approaches
+export interface SectionDividerProps extends SVGProps<SVGSVGElement> {
   variant?: "wave" | "diagonal" | "curve" | "zigzag";
   className?: string;
-}) {
+}
+
+export function SectionDivider({ 
+  variant = "wave",
+  className,
+  ...props 
+}: SectionDividerProps) {
   const dividers = {
     wave: (
-      <svg viewBox="0 0 1440 120" className="w-full h-full">
+      <svg viewBox="0 0 1440 120" className="w-full h-full" {...props}>
         <path
           fill="currentColor"
           d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
@@ -179,12 +197,12 @@ export function SectionDivider({
       </svg>
     ),
     diagonal: (
-      <svg viewBox="0 0 1440 120" className="w-full h-full">
+      <svg viewBox="0 0 1440 120" className="w-full h-full" {...props}>
         <path fill="currentColor" d="M0,120L1440,0L1440,120L0,120Z" />
       </svg>
     ),
     curve: (
-      <svg viewBox="0 0 1440 120" className="w-full h-full">
+      <svg viewBox="0 0 1440 120" className="w-full h-full" {...props}>
         <path
           fill="currentColor"
           d="M0,120C240,40 480,40 720,60C960,80 1200,80 1440,60L1440,120L0,120Z"
@@ -192,7 +210,7 @@ export function SectionDivider({
       </svg>
     ),
     zigzag: (
-      <svg viewBox="0 0 1440 120" className="w-full h-full">
+      <svg viewBox="0 0 1440 120" className="w-full h-full" {...props}>
         <path
           fill="currentColor"
           d="M0,120L120,40L240,120L360,40L480,120L600,40L720,120L840,40L960,120L1080,40L1200,120L1320,40L1440,120L1440,120L0,120Z"
@@ -207,4 +225,3 @@ export function SectionDivider({
     </div>
   );
 }
-
