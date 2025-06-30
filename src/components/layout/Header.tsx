@@ -18,11 +18,11 @@ export default function Header({ className }: HeaderProps) {
   }, []);
 
   const items: NavItem[] = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -30,7 +30,7 @@ export default function Header({ className }: HeaderProps) {
       className={`sticky top-0 z-50 w-full backdrop-blur bg-white/80 dark:bg-gray-900/80 ${className ?? ""}`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="#home" className="text-lg font-bold">
+        <Link href="/" className="text-lg font-bold">
           Elevate Digital
         </Link>
         <button
