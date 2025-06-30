@@ -1,4 +1,6 @@
+'use client';
 import type { ButtonHTMLAttributes } from "react";
+import { motion } from 'framer-motion';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline";
@@ -21,5 +23,12 @@ function cn(...classes: Array<string | undefined>) {
 }
 
 export default function Button({ variant = "primary", className, ...props }: ButtonProps) {
-  return <button className={cn(base, variants[variant], className)} {...props} />;
+  return (
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.98 }}
+      className={cn(base, variants[variant], className)}
+      {...props}
+    />
+  );
 }

@@ -33,6 +33,7 @@ export default function ProjectCard({
         width={600}
         height={400}
         className="h-40 w-full object-cover"
+        loading="lazy"
       />
       <div className="p-4">
         <h3 className="text-lg font-semibold">{title}</h3>

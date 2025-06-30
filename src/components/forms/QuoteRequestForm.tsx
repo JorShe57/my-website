@@ -3,6 +3,7 @@ import { FormEvent, useState, useTransition } from 'react';
 import { requestQuote } from '@/actions/contact';
 import Button from '@/components/ui/Button';
 import Toast from '@/components/ui/Toast';
+import Spinner from '@/components/ui/Spinner';
 
 export default function QuoteRequestForm() {
   const [pending, startTransition] = useTransition();
@@ -86,7 +87,8 @@ export default function QuoteRequestForm() {
           rows={4}
         />
       </div>
-      <Button type="submit" disabled={pending} className="w-full">
+      <Button type="submit" disabled={pending} className="w-full gap-2">
+        {pending && <Spinner />}
         {pending ? 'Sending...' : 'Request Quote'}
       </Button>
       {toast && <Toast {...toast} onClose={() => setToast(null)} />}
