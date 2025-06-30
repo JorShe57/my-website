@@ -2,13 +2,30 @@ import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Container from "@/components/ui/Container";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import Link from "next/link";
 
 export default function Home() {
   const services = [
-    { title: "Web Development", description: "Modern websites built for scale." },
-    { title: "Mobile Apps", description: "iOS and Android applications." },
-    { title: "Digital Marketing", description: "Grow your audience and brand." },
-    { title: "Cloud Solutions", description: "Infrastructure and DevOps services." },
+    {
+      title: "Web Development",
+      description: "Modern websites built for scale.",
+      href: "/services/web-development",
+    },
+    {
+      title: "Mobile Apps",
+      description: "iOS and Android applications.",
+      href: "/services/mobile-apps",
+    },
+    {
+      title: "Digital Marketing",
+      description: "Grow your audience and brand.",
+      href: "/services/digital-marketing",
+    },
+    {
+      title: "Cloud Solutions",
+      description: "Infrastructure and DevOps services.",
+      href: "/services/cloud-solutions",
+    },
   ];
 
   return (
@@ -29,8 +46,16 @@ export default function Home() {
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+
+              <Link href="/contact">
+                <Button variant="primary">Get Started</Button>
+              </Link>
+              <Link href="/portfolio">
+                <Button variant="outline">View Our Work</Button>
+              </Link>
               <Button variant="primary">Get Started</Button>
               <Button variant="outline">View Our Work</Button>
+
             </div>
           </AnimatedSection>
         </Container>
@@ -42,6 +67,11 @@ export default function Home() {
           <p className="mx-auto mt-4 max-w-2xl text-center text-gray-600 dark:text-gray-300">
             Elevate Digital is a full-service agency turning ideas into digital experiences.
           </p>
+          <div className="mt-6 text-center">
+            <Link href="/about">
+              <Button variant="secondary">Learn More</Button>
+            </Link>
+          </div>
         </Container>
       </section>
 
@@ -51,11 +81,23 @@ export default function Home() {
           <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
             {services.map((service, i) => (
               <AnimatedSection key={service.title} delay={i * 0.1}>
+                <Link href={service.href} className="block h-full">
+                  <Card title={service.title} className="h-full">
+                    <p className="text-sm text-gray-600 dark:text-gray-300">{service.description}</p>
+                  </Card>
+                </Link>
+
                 <Card title={service.title}>
                   <p className="text-sm text-gray-600 dark:text-gray-300">{service.description}</p>
                 </Card>
+
               </AnimatedSection>
             ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link href="/services">
+              <Button variant="secondary">All Services</Button>
+            </Link>
           </div>
         </Container>
       </section>
@@ -66,6 +108,11 @@ export default function Home() {
           <p className="mx-auto mt-4 max-w-2xl text-center text-gray-600 dark:text-gray-300">
             Coming soon: a showcase of our latest projects.
           </p>
+          <div className="mt-6 text-center">
+            <Link href="/portfolio">
+              <Button variant="secondary">View Portfolio</Button>
+            </Link>
+          </div>
         </Container>
       </section>
 
@@ -75,6 +122,11 @@ export default function Home() {
           <p className="mx-auto mt-4 max-w-2xl text-center text-gray-600 dark:text-gray-300">
             Reach out at <a className="text-blue-600 underline" href="mailto:info@elevatedigital.com">info@elevatedigital.com</a>
           </p>
+          <div className="mt-6 text-center">
+            <Link href="/contact">
+              <Button variant="secondary">Get In Touch</Button>
+            </Link>
+          </div>
         </Container>
       </section>
     </main>
