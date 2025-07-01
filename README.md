@@ -20,6 +20,16 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Email Setup
+
+This project uses [Resend](https://resend.com) for sending emails. Create a `.env.local` file based on `.env.example` and provide your Resend credentials:
+
+```bash
+RESEND_API_KEY=your_api_key
+RESEND_FROM=from@yourdomain.com
+RESEND_TO=to@yourdomain.com
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
